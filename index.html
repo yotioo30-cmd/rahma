@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Untuk Kamu ❤️ | Aku Suka Kamu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Falling Hearts Animation */
+        .heart-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.3;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ========================================== */
+        /* ANIMASI JERAPPA (JERAPAH) DI POJOK KANAN ATAS */
+        /* ========================================== */
+        .giraffe-mascot {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            cursor: pointer;
+            animation: bounceGiraffe 2s ease-in-out infinite;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+        }
+
+        @keyframes bounceGiraffe {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-8px) rotate(3deg);
+            }
+        }
+
+        /* Leher Jerapah */
+        .giraffe-neck {
+            position: relative;
+            width: 30px;
+            height: 60px;
+            background: linear-gradient(135deg, #F4A460, #E8943A);
+            margin: 0 auto;
+            border-radius: 15px 15px 5px 5px;
+        }
+
+        /* Kepala Jerapah */
+        .giraffe-head {
+            position: relative;
+            width: 65px;
+            height: 55px;
+            background: linear-gradient(135deg, #F4A460, #E8943A);
+            border-radius: 50% 50% 45% 45%;
+            margin-top: -10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Telinga */
+        .giraffe-ears {
+            position: absolute;
+            top: -8px;
+            left: 8px;
+            right: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .ear {
+            width: 18px;
+            height: 18px;
+            background: #E8943A;
+            border-radius: 50%;
+        }
+
+        .ear.left {
+            transform: rotate(-25deg);
+        }
+
+        .ear.right {
+            transform: rotate(25deg);
+        }
+
+        .ear-inner {
+            width: 8px;
+            height: 8px;
+            background: #D4A060;
+            border-radius: 50%;
+            margin: 5px auto;
+        }
+
+        /* Ossicones (tanduk kecil jerapah) */
+        .ossicones {
+            position: absolute;
+            top: -15px;
+            left: 18px;
+            right: 18px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .ossicone {
+            width: 8px;
+            height: 18px;
+            background: #8B6914;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .ossicone-ball {
+            width: 10px;
+            height: 8px;
+            background: #8B6914;
+            border-radius: 50%;
+            margin-top: -3px;
+            margin-left: -1px;
+        }
+
+        /* Wajah Jerapah */
+        .giraffe-face {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 10px;
+        }
+
+        /* Mata */
+        .giraffe-eyes {
+            display: flex;
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .eye {
+            width: 10px;
+            height: 10px;
+            background: #2c1810;
+            border-radius: 50%;
+            animation: blink 4s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 94%, 100% { transform: scaleY(1); }
+            97% { transform: scaleY(0.1); }
+        }
+
+        /* Hidung dan Mulut */
+        .giraffe-nose {
+            width: 12px;
+            height: 8px;
+            background: #8B5A2B;
+            border-radius: 50%;
+            margin-top: 6px;
+        }
+
+        .giraffe-mouth {
+            width: 18px;
+            height: 10px;
+            border-bottom: 2px solid #2c1810;
+            border-radius: 0 0 50% 50%;
+            margin-top: 2px;
+            animation: smile 3s ease-in-out infinite;
+        }
+
+        @keyframes smile {
+            0%, 100% { width: 18px; }
+            50% { width: 22px; }
+        }
+
+        /* Bintik-bintik jerapah */
+        .spots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .spot {
+            position: absolute;
+            background: rgba(139, 69, 19, 0.3);
+            border-radius: 50%;
+        }
+
+        .spot-1 { width: 8px; height: 8px; top: 10px; left: 8px; }
+        .spot-2 { width: 6px; height: 6px; top: 25px; right: 10px; }
+        .spot-3 { width: 7px; height: 7px; bottom: 10px; left: 12px; }
+        .spot-4 { width: 5px; height: 5px; bottom: 20px; right: 15px; }
+
+        /* Hati di atas jerapah */
+        .giraffe-heart {
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            font-size: 18px;
+            animation: floatHeart 1.5s ease-in-out infinite;
+        }
+
+        @keyframes floatHeart {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+            50% { transform: translateY(-8px) scale(1.2); opacity: 0.8; }
+        }
+
+        /* Bubble chat dari jerapah */
+        .giraffe-bubble {
+            position: absolute;
+            top: -50px;
+            right: 10px;
+            background: white;
+            padding: 8px 14px;
+            border-radius: 20px 20px 20px 5px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #ff6b81;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            animation: bubblePop 3s ease-in-out infinite;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .giraffe-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 15px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 10px solid white;
+        }
+
+        @keyframes bubblePop {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.95; }
+        }
+
+        /* Badan Jerapah (opsional) */
+        .giraffe-body {
+            width: 45px;
+            height: 35px;
+            background: linear-gradient(135deg, #F4A460, #E8943A);
+            border-radius: 30px 30px 20px 20px;
+            margin: -5px auto 0;
+            position: relative;
+        }
+
+        .body-spot {
+            position: absolute;
+            background: rgba(139, 69, 19, 0.3);
+            border-radius: 50%;
+        }
+        .body-spot-1 { width: 6px; height: 6px; top: 8px; left: 8px; }
+        .body-spot-2 { width: 5px; height: 5px; top: 18px; right: 10px; }
+        .body-spot-3 { width: 7px; height: 7px; bottom: 8px; left: 18px; }
+
+        /* Main Card */
+        .card {
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Content Flex: Gambar + Teks ke samping */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .image-side {
+            flex: 1;
+            min-width: 280px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .image-side img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .image-side img:hover {
+            transform: scale(1.02);
+        }
+
+        .text-side {
+            flex: 1;
+            min-width: 280px;
+            padding: 50px 40px;
+            background: white;
+        }
+
+        /* Decorative */
+        .tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #ff6b81;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .message {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #444;
+            margin: 20px 0;
+        }
+
+        .message p {
+            margin-bottom: 15px;
+        }
+
+        .heart-icon {
+            color: #ff4757;
+            font-size: 1.2rem;
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* BALASAN KATA - LANGSUNG TAMPIL */
+        .balasan-card {
+            background: linear-gradient(135deg, #ff6b81, #ff4757);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+            animation: glowPulse 2s ease infinite;
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.3);
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(255, 71, 87, 0.3); }
+            50% { box-shadow: 0 10px 40px rgba(255, 71, 87, 0.6); }
+        }
+
+        .balasan-card h2 {
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .balasan-card p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 0.9rem;
+        }
+
+        .balasan-card .love-icon {
+            font-size: 2rem;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Alasan Section */
+        .reasons {
+            background: #fff0f3;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .reasons h3 {
+            color: #ff6b81;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .reasons ul {
+            list-style: none;
+        }
+
+        .reasons li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .reasons li::before {
+            content: "❤️";
+            color: #ff4757;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #25D366;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+        }
+
+        .whatsapp-btn i {
+            font-size: 1.4rem;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .text-side {
+                padding: 35px 25px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .balasan-card h2 {
+                font-size: 1.6rem;
+            }
+            .giraffe-mascot {
+                transform: scale(0.7);
+                top: 5px;
+                right: 5px;
+            }
+            .giraffe-bubble {
+                font-size: 0.55rem;
+                white-space: nowrap;
+                top: -45px;
+                right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="heart-bg" id="heartBg"></div>
+
+<!-- ========================================== -->
+<!-- ANIMASI JERAPPA (JERAPAH) DI POJOK KANAN ATAS -->
+<!-- ========================================== -->
+<div class="giraffe-mascot" id="giraffeMascot">
+    <div class="giraffe-bubble" id="giraffeBubble">
+        💖 Aku suka kamu! 💖
+    </div>
+    <div class="giraffe-neck"></div>
+    <div class="giraffe-head">
+        <div class="ossicones">
+            <div class="ossicone"><div class="ossicone-ball"></div></div>
+            <div class="ossicone"><div class="ossicone-ball"></div></div>
+        </div>
+        <div class="giraffe-ears">
+            <div class="ear left"><div class="ear-inner"></div></div>
+            <div class="ear right"><div class="ear-inner"></div></div>
+        </div>
+        <div class="giraffe-face">
+            <div class="giraffe-eyes">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+            <div class="giraffe-nose"></div>
+            <div class="giraffe-mouth"></div>
+        </div>
+        <div class="spots">
+            <div class="spot spot-1"></div>
+            <div class="spot spot-2"></div>
+            <div class="spot spot-3"></div>
+            <div class="spot spot-4"></div>
+        </div>
+        <div class="giraffe-heart">❤️</div>
+    </div>
+    <div class="giraffe-body">
+        <div class="body-spot body-spot-1"></div>
+        <div class="body-spot body-spot-2"></div>
+        <div class="body-spot body-spot-3"></div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="content">
+        <!-- Gambar di samping kiri -->
+        <div class="image-side">
+            <img src="https://cdn.pixabay.com/photo/2020/10/06/12/13/couple-5632338_640.png" alt="Couple Romantic" onerror="this.src='https://placehold.co/400x400/ff9a9e/white?text=❤️'">
+        </div>
+
+        <!-- Teks di samping kanan -->
+        <div class="text-side">
+            <div class="tag">✨ UNTUK KAMU ✨</div>
+            <h1>Aku Suka Kamu <span class="heart-icon">❤️</span></h1>
+            
+            <div class="message">
+                <p>Dari sekian banyak orang yang aku temui, <strong>kamu</strong> adalah yang paling istimewa.</p>
+                <p>Setiap hari, setiap detik, pikiranku selalu tertuju padamu. Senyummu, tawamu, cara kamu bicara... semuanya membuat hariku lebih berwarna.</p>
+                <p><em>"Aku tidak tahu harus mengatakannya dengan cara apa, tapi yang aku tahu... hatiku berdebar setiap kali melihatmu."</em></p>
+            </div>
+
+            <!-- BALASAN "AKU JUGA SUKA KAMU" LANGSUNG TAMPIL -->
+            <div class="balasan-card">
+                <div class="love-icon">💖💖💖</div>
+                <h2>Aku juga suka kamu!</h2>
+                <p>Terima kasih sudah menjadi bagian terindah dalam hidupku.</p>
+                <div class="love-icon">💕💕💕</div>
+            </div>
+
+            <div class="reasons">
+                <h3>💕 Kenapa aku suka kamu?</h3>
+                <ul>
+                    <li>Kamu selalu membuatku tersenyum</li>
+                    <li>Cara kamu peduli dengan orang lain</li>
+                    <li>Setiap momen bersamamu terasa spesial</li>
+                    <li>Kamu adalah alasan aku bahagia</li>
+                </ul>
+            </div>
+
+            <!-- TOMBOL WHATSAPP -->
+            <a href="https://wa.me/6282278385132?text=Halo%20Aku%20baca%20website%20ungkapannya...%20❤️%20Aku%20juga%20suka%20kamu!" 
+               class="whatsapp-btn" 
+               target="_blank">
+                <i class="fab fa-whatsapp"></i> 
+                Chat WhatsApp Saya
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <div style="text-align: center; margin-top: 8px; font-size: 0.7rem; color: #888;">
+                📞 +62 822-7838-5132
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>🌸 Dari hati yang paling dalam 🌸</p>
+    </div>
+</div>
+
+<script>
+    // Membuat hati jatuh di background
+    function createHeart() {
+        const heartBg = document.getElementById('heartBg');
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = ['❤️', '💖', '💗', '💓', '💕'][Math.floor(Math.random() * 5)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        heart.style.animationDuration = (Math.random() * 4 + 3) + 's';
+        heart.style.animationDelay = Math.random() * 5 + 's';
+        heartBg.appendChild(heart);
+        
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+    }
+
+    setInterval(createHeart, 400);
+    for (let i = 0; i < 20; i++) {
+        setTimeout(createHeart, i * 200);
+    }
+
+    // Bubble chat berganti-ganti
+    const bubbleMessages = [
+        "💖 Aku suka kamu! 💖",
+        "🦒 Kamu manis banget!",
+        "❤️ Senyummu indah!",
+        "💕 Aku sayang kamu!",
+        "🌸 Kamu spesial!",
+        "💖 Jangan pergi ya!"
+    ];
+    
+    let msgIndex = 0;
+    setInterval(() => {
+        const bubble = document.getElementById('giraffeBubble');
+        if (bubble) {
+            msgIndex = (msgIndex + 1) % bubbleMessages.length;
+            bubble.textContent = bubbleMessages[msgIndex];
+        }
+    }, 4000);
+
+    // Konfetti saat halaman dimuat
+    function createConfetti() {
+        const confetti = document.createElement('div');
+        confetti.innerHTML = ['🎉', '🎊', '✨', '💖', '❤️', '🌸', '🦒'][Math.floor(Math.random() * 7)];
+        confetti.style.position = 'fixed';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.top = '-20px';
+        confetti.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        confetti.style.pointerEvents = 'none';
+        confetti.style.zIndex = '9999';
+        confetti.style.animation = 'fall 3s ease forwards';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 3000);
+    }
+
+    setTimeout(() => {
+        for (let i = 0; i < 30; i++) {
+            setTimeout(createConfetti, i * 100);
+        }
+    }, 500);
+
+    // Klik jerapah untuk efek interaksi
+    const giraffe = document.getElementById('giraffeMascot');
+    giraffe.addEventListener('click', () => {
+        const bubble = document.getElementById('giraffeBubble');
+        bubble.textContent = "💖 I LOVE YOU! 💖🦒";
+        bubble.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+            bubble.style.transform = '';
+        }, 500);
+        createConfetti();
+    });
+
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+</body>
+</html>
